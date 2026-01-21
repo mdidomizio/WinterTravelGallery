@@ -13,6 +13,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,7 @@ fun HomeScreen(
     onDestinationClicked: (Destination) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val backgroundColor = Color(0xFFDAEEFF)
     Scaffold(
         topBar = {
             TopAppBar(
@@ -35,11 +37,12 @@ fun HomeScreen(
                     fontWeight = FontWeight.SemiBold
                 ) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    containerColor = backgroundColor,
+                    titleContentColor = Color.Black,
                 )
             )
         },
+        containerColor = backgroundColor,
         modifier = modifier
     ) { innerPadding ->
         LazyVerticalGrid(
