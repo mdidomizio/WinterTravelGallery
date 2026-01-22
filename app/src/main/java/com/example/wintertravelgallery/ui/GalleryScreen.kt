@@ -42,8 +42,8 @@ import com.example.wintertravelgallery.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GalleryScreen(
-    destination: Destination,
-    navController: NavController,
+    destination: String,
+    // navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -65,10 +65,7 @@ fun GalleryScreen(
                 navigationIcon = {
                     Button(
                         onClick = {
-                            navController.popBackStack(
-                                route = "home",
-                                inclusive = false
-                            )
+
                         },
                         modifier = Modifier
                             .padding(start = 8.dp)
