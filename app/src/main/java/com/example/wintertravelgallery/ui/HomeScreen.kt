@@ -6,7 +6,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -27,6 +26,7 @@ fun HomeScreen(
     onDestinationClicked: (Destination) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val destinations = Destination.values().toList()
     val backgroundColor = Color(0xFFDAEEFF)
     Scaffold(
         topBar = {
@@ -50,10 +50,10 @@ fun HomeScreen(
             modifier = Modifier.padding(innerPadding),
             contentPadding = PaddingValues(8.dp)
         ) {
-            items(Destination.values()) { destination ->
+            items(destinations) { destination ->
                 DestinationCard(
                     destination = destination,
-                    onCardClick = { /*onDestinationClicked(destination)*/ }
+                    onCardClick = {  onDestinationClicked(destination)}
                 )
             }
         }

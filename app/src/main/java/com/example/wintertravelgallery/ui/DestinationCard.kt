@@ -2,8 +2,10 @@ package com.example.wintertravelgallery.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,12 +23,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.wintertravelgallery.R
 import com.example.wintertravelgallery.data.Destination
 import com.example.wintertravelgallery.ui.theme.PlusJakartaSans
@@ -40,7 +44,7 @@ fun DestinationCard(
 ) {
     Card(
         modifier = modifier
-            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .padding(horizontal = 4.dp, vertical = 4.dp)
             .fillMaxWidth()
             .clickable(onClick = onCardClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -58,33 +62,48 @@ fun DestinationCard(
                     .fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
-
-            Text(
-                text = destination.title,
+            Box(
                 modifier = Modifier
-                    .padding(16.dp)
-                    .align(Alignment.BottomStart),
-                color = Color.White,
-                fontFamily = PlusJakartaSans,
-                fontWeight = FontWeight.Medium
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colorStops = arrayOf(
+                                0.351f to Color.Transparent,
+                                1f to Color(0xB3061628)
+                            )
+                        )
+                    )
             )
-
-            IconButton(
-                onClick = onCardClick,
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = Color.White,
-                    contentColor = Color.Black
-                ),
+            Row(
                 modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(16.dp)
-                    .size(20.dp)
-                ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                    contentDescription = stringResource(R.string.go_to_details_button_content_description),
-                    modifier = Modifier.size(14.dp)
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Text(
+                    text = destination.title,
+                    modifier = Modifier.weight(1f),
+                    color = Color.White,
+                    fontFamily = PlusJakartaSans,
+                    fontWeight = FontWeight.Medium,
+                    lineHeight = 16.sp
                 )
+
+                IconButton(
+                    onClick = onCardClick,
+                    colors = IconButtonDefaults.iconButtonColors(
+                        containerColor = Color.White,
+                        contentColor = Color.Black
+                    ),
+                    modifier = Modifier.size(20.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = stringResource(R.string.go_to_details_button_content_description),
+                        modifier = Modifier.size(14.dp)
+                    )
+                }
             }
         }
     }

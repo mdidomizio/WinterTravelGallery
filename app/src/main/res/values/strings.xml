@@ -2,4 +2,5 @@
     <string name="app_name">Winter Travel Gallery</string>
     <string name="home_screen_title">Winter Travel Gallery</string>
     <string name="go_to_details_button_content_description">Go to details</string>
+    <string name="go_back_button_content_description">Click the button and go back</string>
 </resources>
