@@ -1,7 +1,6 @@
 package com.example.wintertravelgallery.ui
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -26,11 +25,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
 import com.example.wintertravelgallery.R
 import com.example.wintertravelgallery.data.Destination
 import com.example.wintertravelgallery.ui.theme.PlusJakartaSans
@@ -55,11 +57,14 @@ fun DestinationCard(
                 .height(220.dp)
                 .fillMaxWidth()
         ) {
-            Image(
-                painter = painterResource(id = destination.homeImageId),
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(destination.homeImageId)
+                    .memoryCacheKey(destination.name)
+                    .diskCacheKey(destination.name)
+                    .build(),
                 contentDescription = "Image for ${destination.title}",
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
             Box(
@@ -69,10 +74,9 @@ fun DestinationCard(
                         brush = Brush.verticalGradient(
                             colorStops = arrayOf(
                                 0.351f to Color.Transparent,
-                                1f to Color(0xB3061628)
+                                1f to colorResource(id = R.color.destination_card_gradient_end)
                             )
-                        )
-                    )
+                    ))
             )
             Row(
                 modifier = Modifier

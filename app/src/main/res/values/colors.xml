@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="button_content_color">#001221</color>
+    <color name="button_border_color">#DCE3E9</color>
+    <color name="destination_card_gradient_end">#B3061628</color>
+    <color name="light_blue_background_gradient">#DAEEFF</color>
+    <color name="image_card_loading_gradient_end">#EDF7FF</color>
+    <color name="image_card_error_gradient_start">#FFE9EE</color>
+    <color name="image_card_error_gradient_end">#FFFBFC</color>
+    <color name="image_card_error_icon_color">#F7164B</color>
 </resources>

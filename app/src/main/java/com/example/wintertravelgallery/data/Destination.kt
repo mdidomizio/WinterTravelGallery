@@ -55,5 +55,12 @@ enum class Destination(
         "https://images.unsplash.com/photo-1485808191679-5f86510681a?w=600&q=80",
         "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80",
         "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
-    ))
+    ));
+
+    companion object {
+        fun fromTitle(title: String): Destination {
+            val firstWord = title.split(" ").first()
+            return entries.first { it.title.startsWith(firstWord, ignoreCase = true) }
+        }
+    }
 }

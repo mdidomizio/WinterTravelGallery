@@ -13,6 +13,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -23,11 +24,11 @@ import com.example.wintertravelgallery.ui.theme.PlusJakartaSans
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    onDestinationClicked: (Destination) -> Unit,
+    onDestinationClicked: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val destinations = Destination.values().toList()
-    val backgroundColor = Color(0xFFDAEEFF)
+    val backgroundColor = colorResource(id = R.color.light_blue_background_gradient)
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -50,10 +51,13 @@ fun HomeScreen(
             modifier = Modifier.padding(innerPadding),
             contentPadding = PaddingValues(8.dp)
         ) {
-            items(destinations) { destination ->
+            items(
+                items = Destination.entries,
+                key = { it.name }
+                ) { destination ->
                 DestinationCard(
                     destination = destination,
-                    onCardClick = {  onDestinationClicked(destination)}
+                    onCardClick = {  onDestinationClicked(destination.title)}
                 )
             }
         }

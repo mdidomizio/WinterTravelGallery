@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
@@ -55,8 +56,8 @@ fun ImageCard(
                         .background(
                             brush = Brush.verticalGradient(
                                 colors = listOf(
-                                    Color(0xFFDAEEFF),
-                                    Color(0xFFEDF7FF)
+                                    colorResource(id = R.color.light_blue_background_gradient),
+                                    colorResource(id = R.color.image_card_loading_gradient_end)
                                 )
                             )
                         ),
@@ -70,15 +71,15 @@ fun ImageCard(
                 }
             },
             error = {
-                val color = Color(0xFFF7164B)
+                val color = colorResource(id = R.color.image_card_error_icon_color)
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(
                             brush = Brush.verticalGradient(
                                 colors = listOf(
-                                    Color(0xFFFFE9EE),
-                                    Color(0xFFFFFBFC)
+                                    colorResource(id = R.color.image_card_error_gradient_start),
+                                    colorResource(id = R.color.image_card_error_gradient_end)
                                 )
                             )
                         ),
